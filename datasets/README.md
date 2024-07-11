@@ -1,8 +1,13 @@
 # カスタムデータセット
 
-Roboflowというサービスを使用してデーターセットを作成しています。詳細は[こちら](https://universe.roboflow.com/hoku/sugarcane-3vhxz)を参照してください。
+Roboflowというサービスを使用してデーターセットを作成しています。
 
-学習や評価に使用するデータセットは[こちら](https://universe.roboflow.com/hoku/sugarcane-3vhxz/dataset/11)からダウンロードし、`train`, `valid`, `test`をここに配置してください。
+学習や評価に使用するデータセットは、
+
+- [サトウキビ](https://universe.roboflow.com/hoku/sugarcane-3vhxz/dataset/11)
+- [パイナップル](https://universe.roboflow.com/hoku/pineapple-thsih/dataset/7)
+
+から`YOLO v9`形式でダウンロードし、下記を参考に`train`, `valid`, `test`を各ディレクトリに配置してください。
 
 ## ディレクトリ構造
 
@@ -10,21 +15,40 @@ Roboflowというサービスを使用してデーターセットを作成して
 datasets/
     .gitignore
     README.md
-    README.dataset.txt
-    README.roboflow.txt
-    train/
-        images/
-            ...
-        labels/
-            ...
-    valid/
-        images/
-            ...
-        labels/
-            ...
-    test/
-        images/
-            ...
-        labels/
-            ...
+    sugarcane/
+        README.dataset.txt
+        README.roboflow.txt
+        train/
+            images/
+                ...
+            labels/
+                ...
+        valid/
+            images/
+                ...
+            labels/
+                ...
+        test/
+            images/
+                ...
+            labels/
+                ...
+    pineapple/
+        README.dataset.txt
+        README.roboflow.txt
+        train/
+            images/
+                ...
+            labels/
+                ...
+        valid/
+            images/
+                ...
+            labels/
+                ...
+        test/
+            images/
+                ...
+            labels/
+                ...
 ```
