@@ -1,6 +1,7 @@
-train: datasets/train/images
-val: datasets/valid/images
-test: datasets/test/images
+# pythonを実行するディレクトリから見たパス
+train: datasets/sugarcane/train/images
+val: datasets/sugarcane/valid/images
+test: datasets/sugarcane/test/images
 
 nc: 2
 names: ['sugarcane', 'weed']
