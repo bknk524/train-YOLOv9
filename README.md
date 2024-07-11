@@ -150,14 +150,19 @@ pip install -r requirements-gpu.txt
 
 また、学習に使用するデータセットは[こちら](./datasets/README.md)に従い、`datasets`ディレクトリに配置してください。
 
+学習後の結果は`runs/train/`に保存されます。
+
 ``` shell
 # Sugarcaneのファインチューニング
-python train_dual.py --workers 8 --device 0 --batch 16 --data data/data.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-sugarcane --hyp hyp.scratch-high.yaml --epochs 500 --close-mosaic 15
+python train_dual.py --workers 8 --device 0 --batch 16 --data data/sugarcane.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-sugarcane --hyp hyp.scratch-sugarcane.yaml --epochs 300 --close-mosaic 15
+
+# Pineappleのファインチューニング
+python train_dual.py --workers 8 --device 0 --batch 16 --data data/pineapple.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-pineapple --hyp hyp.scratch-pineapple.yaml --epochs 300 --close-mosaic 15
 
 # 可変オプション
 # --workers: CPUのコア数  2, 4, 8 etc...
 # --batch: バッチサイズ  8, 16, 32, 64 etc...
-# --epochs: 学習回数  200～500?
+# --epochs: 学習回数  100～500?
 # --close-mosaic: close mosaic(data augmentation)の確率  0～100
 
 # ↓ 追加していいかも？
@@ -166,6 +171,19 @@ python train_dual.py --workers 8 --device 0 --batch 16 --data data/data.yaml --i
 # --cos-lr, --flat-cos-lr, --fixed-lr: スケジューラー どれか一つ
 ```
 
+ハイパーパラメーターは自由に調整してください。`data/hyps/`にあります。
+
+- サトウキビ: `hyp.scratch-sugarcane.yaml`
+- パイナップル: `hyp.scratch-pineapple.yaml`
+
 ## コントリビューター向けガイドライン
 
 コントリビューター向けのガイドラインについては、こちらの[CONTRIBUTING.md](https://github.com/TechC-SugarCane/.github/blob/main/CONTRIBUTING.md)を参照してください。
+
+### ※ 注意
+
+このリポジトリはforkなので、Pull Requestを送る際はこのリポジトリに対して送るようにしてください。
+
+デフォルトだとbaseリポジトリが公式のリポジトリになっているので、注意してください。
+
+`Comparing changes`でのドロップダウン(`base repository`)を、`TechC-SugarCane/train-YOLOv9`に変更してください。画面が遷移したら大丈夫です。
