@@ -146,7 +146,7 @@ pip install -r requirements-gpu.txt
 
 ## Training
 
-事前学習済みモデルとして`yolov9-s.pt`を使用するので、[こちら](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-s.pt)からダウンロードして`weights`ディレクトリに配置してください。
+事前学習済みモデルとして`yolov9-e.pt`を使用するので、[こちら](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-e.pt)からダウンロードして`weights`ディレクトリに配置してください。
 
 また、学習に使用するデータセットは[こちら](./datasets/README.md)に従い、`datasets`ディレクトリに配置してください。
 
@@ -154,10 +154,10 @@ pip install -r requirements-gpu.txt
 
 ``` shell
 # Sugarcaneのファインチューニング
-python train_dual.py --workers 8 --device 0 --batch 16 --data data/sugarcane.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-sugarcane --hyp hyp.scratch-sugarcane.yaml --epochs 300 --close-mosaic 15
+python train_dual.py --workers 8 --device 0 --batch 16 --data data/sugarcane.yaml --img 640 --cfg models/detect/yolov9-e.yaml --weights './weights/yolov9-e.pt' --name yolov9-e-sugarcane --hyp hyp.scratch-sugarcane.yaml --epochs 300 --close-mosaic 15
 
 # Pineappleのファインチューニング
-python train_dual.py --workers 8 --device 0 --batch 16 --data data/pineapple.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-pineapple --hyp hyp.scratch-pineapple.yaml --epochs 300 --close-mosaic 15
+python train_dual.py --workers 8 --device 0 --batch 16 --data data/pineapple.yaml --img 640 --cfg models/detect/yolov9-e.yaml --weights './weights/yolov9-e.pt' --name yolov9-e-pineapple --hyp hyp.scratch-pineapple.yaml --epochs 300 --close-mosaic 15
 
 # 可変オプション
 # --workers: CPUのコア数  2, 4, 8 etc...
