@@ -1,6 +1,6 @@
 absl-py==2.1.0
 albucore==0.0.12
-albumentations==1.4.11
+albumentations==1.4.12
 annotated-types==0.7.0
 asttokens==2.4.1
 certifi==2024.7.4
