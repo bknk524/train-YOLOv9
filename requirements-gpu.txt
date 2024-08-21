@@ -1,6 +1,6 @@
 absl-py==2.1.0
 albucore==0.0.12
-albumentations==1.4.11
+albumentations==1.4.12
 annotated-types==0.7.0
 asttokens==2.4.1
 certifi==2024.7.4
@@ -33,7 +33,7 @@ lazy_loader==0.4
 Markdown==3.6
 markdown-it-py==3.0.0
 MarkupSafe==2.1.5
-matplotlib==3.9.1
+matplotlib==3.9.0
 matplotlib-inline==0.1.7
 mdurl==0.1.2
 mkl==2021.4.0
