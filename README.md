@@ -146,7 +146,7 @@ pip install -r requirements-gpu.txt
 
 ## Training
 
-事前学習済みモデルとして`yolov9-s.pt`を使用するので、[こちら](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-s.pt)からダウンロードして`weights`ディレクトリに配置してください。
+事前学習済みモデルとして`yolov9-e.pt`を使用するので、[こちら](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-e.pt)からダウンロードして`weights`ディレクトリに配置してください。
 
 学習に使用するデータセットはRoboflowというサービスを使用して作成しています。
 
@@ -169,7 +169,10 @@ git clone https://huggingface.co/datasets/TechC-SugarCane/yolov9-datasets
 git config lfs.https://github.com/TechC-SugarCane/train-YOLOv9.git/info/lfs.locksverify false
 ```
 
-学習後の結果は`runs/train/`に保存されます。
+学習後の結果は`runs/train/<--name(番号)>`に保存されます。
+
+学習でよいスコアが出た場合は、`runs/train/<--name(番号)>/`にREADME.mdを作成してください。
+その際は、[こちら](./runs/train/README.md)を参考に作成してください。
 
 ``` shell
 # Sugarcaneのファインチューニング
@@ -178,13 +181,16 @@ python train_dual.py --workers 8 --device 0 --batch 16 --data yolov9-datasets/su
 # Pineappleのファインチューニング
 python train_dual.py --workers 8 --device 0 --batch 16 --data yolov9-datasets/pineapple/data.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-pineapple --hyp hyp.scratch-pineapple.yaml --epochs 300 --close-mosaic 15
 
+
 # 可変オプション
+# --name: 結果を保存するディレクトリ名
 # --workers: CPUのコア数  2, 4, 8 etc...
 # --batch: バッチサイズ  8, 16, 32, 64 etc...
 # --epochs: 学習回数  100～500?
 # --close-mosaic: close mosaic(data augmentation)の確率  0～100
 
 # ↓ 追加していいかも？
+# --patience: EarlyStoppingのパラメータ  100(default), 20, 25 etc...
 # --optimizer: 最適化アルゴリズム  SDG(default), Adam, AdamW
 # --seed: シード値  0(default), 1, 2 etc...
 # --cos-lr, --flat-cos-lr, --fixed-lr: スケジューラー どれか一つ
