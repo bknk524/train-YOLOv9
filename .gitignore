@@ -9,5 +9,12 @@ __pycache__/
 *.pt
 *.pth
 
+# onnx
+*.onnx
+
+# TensorRT
+*.bin
+*.engine
+
 # datasets
 yolov9-datasets/
