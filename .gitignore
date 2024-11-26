@@ -18,3 +18,4 @@ __pycache__/
 
 # datasets
 yolov9-datasets/
+datasets/
