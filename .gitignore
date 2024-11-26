@@ -15,7 +15,3 @@ __pycache__/
 # TensorRT
 *.bin
 *.engine
-
-# datasets
-yolov9-datasets/
-datasets/
