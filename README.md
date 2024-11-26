@@ -152,23 +152,19 @@ pip install -r requirements-gpu.txt
 
 学習に使用するデータセットはRoboflowというサービスを使用して作成しています。
 
-学習や評価に使用するデータセットは、
-
-- [サトウキビ](https://universe.roboflow.com/hoku/sugarcane-3vhxz/dataset/11)
-- [パイナップル](https://universe.roboflow.com/hoku/pineapple-thsih/dataset/7)
-
-にありますが、手動でダウンロードするのは面倒なので`huggingface`にdatasetsをまとめてあります。
-
-下記コマンドを実行して、datasetsをダウンロードしてください。
+学習や評価に使用するデータセットは、[Roboflow](https://universe.roboflow.com/techcsugarcane/)にありますが、手動でダウンロードするのは面倒なので下記コマンドを実行してdatasetsをダウンロードしてください。
 
 ```bash
-# Make sure you have git-lfs installed (https://git-lfs.com)
-git lfs install
+# Sugarcane Version 4
+$sugarcane_url="https://app.roboflow.com/ds/T2zV0t9XVG?key=VldKEnvBjY"
+# Pineapple Version 2
+$pineapple_url="https://app.roboflow.com/ds/hfpq9ajFvM?key=5Rq1mFJi7w"
 
-git clone https://huggingface.co/datasets/TechC-SugarCane/yolov9-datasets
+# mac向け
+bash download_dataset.sh $sugarcane_url $pineapple_url
 
-# git push時に発生するエラーを無効化
-git config lfs.https://github.com/TechC-SugarCane/train-YOLOv9.git/info/lfs.locksverify false
+# windows向け
+./download_dataset.ps1 -SugarcaneUrl $sugarcane_url -PineappleUrl $pineapple_url
 ```
 
 学習後の結果は`runs/train/<--name(番号)>`に保存されます。
@@ -178,10 +174,10 @@ git config lfs.https://github.com/TechC-SugarCane/train-YOLOv9.git/info/lfs.lock
 
 ``` shell
 # Sugarcaneのファインチューニング
-python train_dual.py --workers 8 --device 0 --batch 16 --data yolov9-datasets/sugarcane/data.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-sugarcane --hyp hyp.scratch-sugarcane.yaml --epochs 300 --close-mosaic 15
+python train_dual.py --workers 8 --device 0 --batch 16 --data datasets/sugarcane/data.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-sugarcane --hyp hyp.scratch-sugarcane.yaml --epochs 300 --close-mosaic 15
 
 # Pineappleのファインチューニング
-python train_dual.py --workers 8 --device 0 --batch 16 --data yolov9-datasets/pineapple/data.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-pineapple --hyp hyp.scratch-pineapple.yaml --epochs 300 --close-mosaic 15
+python train_dual.py --workers 8 --device 0 --batch 16 --data datasets/pineapple/data.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-pineapple --hyp hyp.scratch-pineapple.yaml --epochs 300 --close-mosaic 15
 
 
 # 可変オプション
