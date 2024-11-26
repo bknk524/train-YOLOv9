@@ -150,21 +150,12 @@ pip install -r requirements-gpu.txt
 
 事前学習済みモデルとして`yolov9-e.pt`を使用するので、[こちら](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-e.pt)からダウンロードして`weights`ディレクトリに配置してください。
 
-学習に使用するデータセットはRoboflowというサービスを使用して作成しています。
+データセットは 一階層上に[manage-datasetリポジトリ](https://github.com/TechC-SugarCane/manage-dataset)をcloneし、[README](https://github.com/TechC-SugarCane/manage-dataset/blob/main/README.md)に従ってダウンロードしてください。
 
-学習や評価に使用するデータセットは、[Roboflow](https://universe.roboflow.com/techcsugarcane/)にありますが、手動でダウンロードするのは面倒なので下記コマンドを実行してdatasetsをダウンロードしてください。
-
-```bash
-# Sugarcane Version 4
-$sugarcane_url="https://app.roboflow.com/ds/T2zV0t9XVG?key=VldKEnvBjY"
-# Pineapple Version 2
-$pineapple_url="https://app.roboflow.com/ds/hfpq9ajFvM?key=5Rq1mFJi7w"
-
-# mac向け
-bash download_dataset.sh $sugarcane_url $pineapple_url
-
-# windows向け
-./download_dataset.ps1 -SugarcaneUrl $sugarcane_url -PineappleUrl $pineapple_url
+```shell
+# clone済みの人はスキップ
+cd ..
+git clone git@github.com:TechC-SugarCane/manage-dataset.git
 ```
 
 学習後の結果は`runs/train/<--name(番号)>`に保存されます。
@@ -174,10 +165,10 @@ bash download_dataset.sh $sugarcane_url $pineapple_url
 
 ``` shell
 # Sugarcaneのファインチューニング
-python train_dual.py --workers 8 --device 0 --batch 16 --data datasets/sugarcane/data.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-sugarcane --hyp hyp.scratch-sugarcane.yaml --epochs 300 --close-mosaic 15
+python train_dual.py --workers 8 --device 0 --batch 16 --data ../manage-dataset/datasets/sugarcane/data.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-sugarcane --hyp hyp.scratch-sugarcane.yaml --epochs 300 --close-mosaic 15
 
 # Pineappleのファインチューニング
-python train_dual.py --workers 8 --device 0 --batch 16 --data datasets/pineapple/data.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-pineapple --hyp hyp.scratch-pineapple.yaml --epochs 300 --close-mosaic 15
+python train_dual.py --workers 8 --device 0 --batch 16 --data ../manage-dataset/datasets/pineapple/data.yaml --img 640 --cfg models/detect/yolov9-s.yaml --weights './weights/yolov9-s.pt' --name yolov9-s-pineapple --hyp hyp.scratch-pineapple.yaml --epochs 300 --close-mosaic 15
 
 
 # 可変オプション
