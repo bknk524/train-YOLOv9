@@ -150,7 +150,7 @@ pip install -r requirements-gpu.txt
 
 事前学習済みモデルとして`yolov9-e.pt`を使用するので、[こちら](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-e.pt)からダウンロードして`weights`ディレクトリに配置してください。
 
-データセットは 一階層上に[manage-datasetリポジトリ](https://github.com/TechC-SugarCane/manage-dataset)をcloneし、[README](https://github.com/TechC-SugarCane/manage-dataset/blob/main/README.md)に従ってダウンロードしてください。
+データセットは 一階層上に[manage-datasetリポジトリ](https://github.com/TechC-SugarCane/manage-dataset)をcloneし、[manage-dataset/README](https://github.com/TechC-SugarCane/manage-dataset/blob/main/README.md)に従ってダウンロードしてください。
 
 ```shell
 # clone済みの人はスキップ
