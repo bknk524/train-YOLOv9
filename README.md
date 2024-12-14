@@ -105,7 +105,7 @@ AutoDL docker environment: https://github.com/WongKinYiu/yolov9/issues/112#issue
 ### 1. リポジトリをクローン
 
 ```bash
-git clone git@github.com:TechC-SugarCane/train-YOLOv9.git
+git clone https://github.com/bknk524/train-YOLOv9.git
 
 cd train-YOLOv9
 ```
